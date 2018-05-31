@@ -11,13 +11,13 @@ int swap(int *a, int *b) {
 	return 0;
 }
 
-int *searchmax(int *mas, int *size, int *sizemax) {
+int *searchmax(int *mas, int size, int sizemax) {
 	int err = 0;
-	if (mas == NULL || size == NULL || sizemax == NULL) {
+	if (mas == NULL) {
 		return NULL;
 	}
 	int i, j;
-	for (i = 1; i < *size; ++i) {
+	for (i = 1; i < size; ++i) {
 		for (j = i; j > 0 && mas[j - 1] > mas[j]; j--) {
 
 			err = swap(&mas[j - 1], &mas[j]);
@@ -27,13 +27,13 @@ int *searchmax(int *mas, int *size, int *sizemax) {
 		}
 	}
 	int *buffmax = NULL;
-	buffmax = (int *)calloc(*sizemax, sizeof(int));
+	buffmax = (int *)calloc(sizemax, sizeof(int));
 	if (buffmax == NULL) {
 		return NULL;
 
 	}
-	for (i = 0; i < *sizemax; ++i) {
-		buffmax[i] = mas[*size - i - 1];
+	for (i = 0; i < sizemax; ++i) {
+		buffmax[i] = mas[size - i - 1];
 
 	}
 
@@ -77,7 +77,7 @@ int main() {
 		return 0;
 	}
 	int *buffmax = NULL;
-	buffmax = searchmax(buff, &size, &sizemax);
+	buffmax = searchmax(buff, size, sizemax);
 	if (buffmax == NULL) {
 		printf("[error]");
 		free(buff);

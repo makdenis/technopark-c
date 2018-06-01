@@ -13,7 +13,7 @@ int swap(int *a, int *b) {
 
 int *searchmax(int *mas, int size, int sizemax) {
 	int err = 0;
-	if (mas == NULL) {
+	if (mas == NULL || size < 0 || sizemax < 0) {
 		return NULL;
 	}
 	int i, j;
